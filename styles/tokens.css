@@ -1,0 +1,160 @@
+/* ============================================================
+   tokens.css — ListenLM design tokens
+   Warm, editorial palette (ivory / ink / terracotta / pine),
+   deliberately not blue-purple "AI product" branding.
+   Structure mirrors the extension's own token approach:
+   light default -> dark override -> high-contrast -> forced-colors
+   -> reduced-motion, all as media-query overrides of the same
+   custom properties.
+   ============================================================ */
+
+:root {
+  /* ---- Color: light (default) ---- */
+  --color-bg: #faf6ef;
+  --color-surface: #fffdf9;
+  --color-surface-raised: #ffffff;
+  --color-border: #e7ddcb;
+  --color-ink: #201b14;
+  --color-ink-muted: #6b6152;
+
+  --color-accent: #9c3d1a;
+  --color-accent-hover: #7c3014;
+  --color-accent-ink: #fffaf4;
+
+  --color-secondary: #2f5d47;
+  --color-secondary-ink: #fffaf4;
+
+  --status-solid-bg: #e9f2ec;
+  --status-solid-border: #b7d3c3;
+  --status-solid-text: #1f4634;
+
+  --status-partial-bg: #fbf1de;
+  --status-partial-border: #e7cd93;
+  --status-partial-text: #6b4c14;
+
+  --focus-ring: 0 0 0 3px rgba(156, 61, 26, 0.45);
+
+  /* ---- Type ---- */
+  --font-body: var(--font-atkinson), "Segoe UI", system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), "Cascadia Code", Consolas, monospace;
+
+  --text-sm: 0.875rem;
+  --text-base: 1.125rem;
+  --text-md: 1.25rem;
+  --text-lg: 1.5rem;
+  --text-xl: 1.875rem;
+  --text-2xl: 2.375rem;
+  --text-3xl: 3rem;
+
+  --leading-tight: 1.25;
+  --leading-snug: 1.35;
+  --leading-normal: 1.6;
+
+  /* ---- Space (8px base) ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  --content-max: 72rem;
+  --prose-max: 40rem;
+
+  --duration-fast: 0.15s;
+  --duration-base: 0.2s;
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---- Color: dark ---- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #17140f;
+    --color-surface: #211c15;
+    --color-surface-raised: #29231a;
+    --color-border: #40382a;
+    --color-ink: #f4eee2;
+    --color-ink-muted: #b9ab93;
+
+    --color-accent: #e2794a;
+    --color-accent-hover: #ef9268;
+    --color-accent-ink: #1b1109;
+
+    --color-secondary: #74b393;
+    --color-secondary-ink: #0c1f16;
+
+    --status-solid-bg: #16281f;
+    --status-solid-border: #35543f;
+    --status-solid-text: #9fd6b6;
+
+    --status-partial-bg: #2c2210;
+    --status-partial-border: #5a4a20;
+    --status-partial-text: #e8c876;
+
+    --focus-ring: 0 0 0 3px rgba(226, 121, 74, 0.5);
+  }
+}
+
+/* ---- High contrast (user preference, not forced-colors mode) ---- */
+@media (prefers-contrast: more) {
+  :root {
+    --color-bg: #ffffff;
+    --color-surface: #ffffff;
+    --color-surface-raised: #ffffff;
+    --color-border: #000000;
+    --color-ink: #000000;
+    --color-ink-muted: #000000;
+    --color-accent: #7a2c0e;
+    --color-accent-hover: #58200a;
+    --color-accent-ink: #ffffff;
+    --color-secondary: #14351f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-bg: #000000;
+      --color-surface: #000000;
+      --color-surface-raised: #000000;
+      --color-border: #ffffff;
+      --color-ink: #ffffff;
+      --color-ink-muted: #ffffff;
+      --color-accent: #ffb37a;
+      --color-accent-ink: #000000;
+      --color-secondary: #9fe6c0;
+    }
+  }
+}
+
+/* ---- Windows High Contrast / forced-colors ---- */
+@media (forced-colors: active) {
+  :root {
+    --color-bg: Canvas;
+    --color-surface: Canvas;
+    --color-surface-raised: Canvas;
+    --color-border: ButtonText;
+    --color-ink: CanvasText;
+    --color-ink-muted: CanvasText;
+    --color-accent: LinkText;
+    --color-accent-ink: ButtonFace;
+    --color-secondary: LinkText;
+    --focus-ring: 0 0 0 3px Highlight;
+  }
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
