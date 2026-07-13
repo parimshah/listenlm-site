@@ -65,18 +65,20 @@ export default function HomePage() {
         <h2>What it actually does</h2>
         <ol className={styles.stepList}>
           <li>
-            <strong>Watches.</strong> A lightweight observer notices new AI responses as
-            they render.
+            <strong>Watches.</strong>{" "}
+            {"A lightweight observer notices new AI responses as they render."}
           </li>
           <li>
-            <strong>Labels.</strong> It adds real structure in place &mdash; landmarks,
-            code-block labels, table headers &mdash; without touching what&rsquo;s on
-            screen.
+            <strong>Labels.</strong>{" "}
+            {
+              "It adds real structure in place — landmarks, code-block labels, table headers — without touching what’s on screen."
+            }
           </li>
           <li>
-            <strong>Announces once.</strong> When a response finishes, your screen reader
-            hears a single, clear &ldquo;response complete,&rdquo; not a stream of
-            interruptions.
+            <strong>Announces once.</strong>{" "}
+            {
+              "When a response finishes, your screen reader hears a single, clear “response complete,” not a stream of interruptions."
+            }
           </li>
         </ol>
         <p>

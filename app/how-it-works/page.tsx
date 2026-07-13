@@ -60,25 +60,28 @@ export default function HowItWorksPage() {
         <h2>Platform by platform</h2>
         <ul className={styles.problemList}>
           <li>
-            <strong>claude.ai</strong> has the deepest coverage: chat turns are marked as
-            regions, and when a response finishes you also hear a short manifest &mdash;
-            how many code blocks, and which files were referenced.
+            <strong>claude.ai</strong>{" "}
+            {
+              "has the deepest coverage: chat turns are marked as regions, and when a response finishes you also hear a short manifest — how many code blocks, and which files were referenced."
+            }
           </li>
           <li>
-            <strong>ChatGPT, Gemini, and Copilot</strong> run the same transform pipeline
-            on a best-effort basis. Their DOM structure isn&rsquo;t guaranteed to stay
-            stable as those products change, so selectors get maintained and updated as
-            needed.
+            <strong>ChatGPT, Gemini, and Copilot</strong>{" "}
+            {
+              "run the same transform pipeline on a best-effort basis. Their DOM structure isn’t guaranteed to stay stable as those products change, so selectors get maintained and updated as needed."
+            }
           </li>
           <li>
-            <strong>VS Code and Cursor</strong> get the same structure injected directly
-            into the chat panel, tested against NVDA, JAWS, VoiceOver, and Orca.
+            <strong>VS Code and Cursor</strong>{" "}
+            {
+              "get the same structure injected directly into the chat panel, tested against NVDA, JAWS, VoiceOver, and Orca."
+            }
           </li>
           <li>
-            <strong>The terminal CLI</strong> takes a different path entirely: it strips
-            ANSI escape codes and spinner animations, parses the response&rsquo;s markdown
-            structure, and speaks a plain-text structural summary instead of raw terminal
-            output.
+            <strong>The terminal CLI</strong>{" "}
+            {
+              "takes a different path entirely: it strips ANSI escape codes and spinner animations, parses the response’s markdown structure, and speaks a plain-text structural summary instead of raw terminal output."
+            }
           </li>
         </ul>
         <p className={styles.moreLink}>
