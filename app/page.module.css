@@ -68,6 +68,13 @@
   max-width: 44rem;
 }
 
+.heroNote {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-secondary);
+  margin-top: var(--space-2);
+}
+
 .heroActions {
   display: flex;
   flex-wrap: wrap;

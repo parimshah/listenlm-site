@@ -59,6 +59,9 @@ export default function HomePage() {
             read Claude, ChatGPT, and Gemini outputs clearly, instead of reading out raw
             punctuation and broken formatting.
           </p>
+          <p className={styles.heroNote}>
+            No new workflow &mdash; works with the screen reader you already use.
+          </p>
           <div className={styles.heroActions}>
             <Link href="#get" className={`${styles.primaryCta} hoverBorderGradient`}>
               Get ListenLM
