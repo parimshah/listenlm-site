@@ -1,0 +1,8 @@
+/* The animated marker background is purely decorative. Under forced-colors
+   or a user's high-contrast preference, drop it entirely and let the text's
+   own color (which those modes already override) carry the emphasis. */
+@media (forced-colors: active), (prefers-contrast: more) {
+  .highlight {
+    background: none !important;
+  }
+}

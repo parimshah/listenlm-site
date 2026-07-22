@@ -1,4 +1,6 @@
 @import "../styles/tokens.css";
+@import "../styles/effects.css";
+@import "../styles/tailwind.css";
 
 *,
 *::before,
@@ -7,8 +9,14 @@
 }
 
 html {
-  color-scheme: light dark;
+  color-scheme: light;
   scroll-behavior: smooth;
+}
+
+/* Keep anchored sections clear of the sticky header when jumped to. */
+:target,
+[id] {
+  scroll-margin-top: 5rem;
 }
 
 body {
@@ -29,10 +37,20 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-body);
+  font-family: var(--font-display);
   line-height: var(--leading-tight);
   font-weight: 700;
+  letter-spacing: -0.015em;
   text-wrap: balance;
+}
+
+/* A heading that opens its container gets its spacing from the section's
+   own padding, so the flow margin below would just double the gap. */
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child {
+  margin-top: 0;
 }
 
 h1 {

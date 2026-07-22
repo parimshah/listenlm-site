@@ -1,42 +1,43 @@
 /* ============================================================
-   tokens.css — ListenLM design tokens
-   Warm, editorial palette (ivory / ink / terracotta / pine),
-   deliberately not blue-purple "AI product" branding.
-   Structure mirrors the extension's own token approach:
-   light default -> dark override -> high-contrast -> forced-colors
-   -> reduced-motion, all as media-query overrides of the same
-   custom properties.
+   tokens.css - ListenLM design tokens
+
+   Light theme only. prefers-contrast and forced-colors override
+   the palette below, since those are accessibility signals rather
+   than cosmetic preferences.
    ============================================================ */
 
 :root {
-  /* ---- Color: light (default) ---- */
-  --color-bg: #faf6ef;
-  --color-surface: #fffdf9;
+  /* ---- Color ---- */
+  --color-bg: #faf9f6;
+  --color-surface: #ffffff;
   --color-surface-raised: #ffffff;
-  --color-border: #e7ddcb;
-  --color-ink: #201b14;
-  --color-ink-muted: #6b6152;
+  --color-border: #ecebe6;
+  --color-ink: #1a1611;
+  --color-ink-muted: #6b6459;
 
-  --color-accent: #9c3d1a;
-  --color-accent-hover: #7c3014;
-  --color-accent-ink: #fffaf4;
+  --color-accent: #c2410c;
+  --color-accent-hover: #9a3412;
+  --color-accent-ink: #ffffff;
+  --color-accent-rgb: 194, 65, 12;
 
-  --color-secondary: #2f5d47;
-  --color-secondary-ink: #fffaf4;
+  --color-secondary: #0d9488;
+  --color-secondary-ink: #ffffff;
+  --color-secondary-rgb: 13, 148, 136;
 
-  --status-solid-bg: #e9f2ec;
-  --status-solid-border: #b7d3c3;
-  --status-solid-text: #1f4634;
+  --status-solid-bg: #e7f6f0;
+  --status-solid-border: #9bd8c5;
+  --status-solid-text: #0b6152;
 
   --status-partial-bg: #fbf1de;
   --status-partial-border: #e7cd93;
   --status-partial-text: #6b4c14;
 
-  --focus-ring: 0 0 0 3px rgba(156, 61, 26, 0.45);
+  --focus-ring: 0 0 0 3px rgba(194, 65, 12, 0.4);
 
   /* ---- Type ---- */
   --font-body: var(--font-atkinson), "Segoe UI", system-ui, sans-serif;
   --font-mono: var(--font-plex-mono), "Cascadia Code", Consolas, monospace;
+  --font-display: var(--font-display-face), Georgia, "Times New Roman", serif;
 
   --text-sm: 0.875rem;
   --text-base: 1.125rem;
@@ -73,35 +74,6 @@
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ---- Color: dark ---- */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #17140f;
-    --color-surface: #211c15;
-    --color-surface-raised: #29231a;
-    --color-border: #40382a;
-    --color-ink: #f4eee2;
-    --color-ink-muted: #b9ab93;
-
-    --color-accent: #e2794a;
-    --color-accent-hover: #ef9268;
-    --color-accent-ink: #1b1109;
-
-    --color-secondary: #74b393;
-    --color-secondary-ink: #0c1f16;
-
-    --status-solid-bg: #16281f;
-    --status-solid-border: #35543f;
-    --status-solid-text: #9fd6b6;
-
-    --status-partial-bg: #2c2210;
-    --status-partial-border: #5a4a20;
-    --status-partial-text: #e8c876;
-
-    --focus-ring: 0 0 0 3px rgba(226, 121, 74, 0.5);
-  }
-}
-
 /* ---- High contrast (user preference, not forced-colors mode) ---- */
 @media (prefers-contrast: more) {
   :root {
@@ -111,23 +83,10 @@
     --color-border: #000000;
     --color-ink: #000000;
     --color-ink-muted: #000000;
-    --color-accent: #7a2c0e;
-    --color-accent-hover: #58200a;
+    --color-accent: #9a3412;
+    --color-accent-hover: #7a2810;
     --color-accent-ink: #ffffff;
-    --color-secondary: #14351f;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --color-bg: #000000;
-      --color-surface: #000000;
-      --color-surface-raised: #000000;
-      --color-border: #ffffff;
-      --color-ink: #ffffff;
-      --color-ink-muted: #ffffff;
-      --color-accent: #ffb37a;
-      --color-accent-ink: #000000;
-      --color-secondary: #9fe6c0;
-    }
+    --color-secondary: #0a5045;
   }
 }
 

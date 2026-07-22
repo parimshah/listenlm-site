@@ -1,13 +1,71 @@
+/* ---- Hero: full-bleed soft gradient behind a centered container ---- */
 .hero {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.heroGlow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    70% 90% at 15% 0%,
+    rgba(var(--color-accent-rgb), 0.08),
+    transparent 70%
+  );
+}
+
+@media (forced-colors: active), (prefers-contrast: more) {
+  .heroGlow {
+    display: none;
+  }
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
   padding-block: var(--space-9) var(--space-8);
-  max-width: 48rem;
+  max-width: 54rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+  margin: 0 0 var(--space-4);
+}
+
+.eyebrow::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.eyebrowSmall {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-ink-muted);
+  margin: 0 0 var(--space-3);
+}
+
+.accentText {
+  color: var(--color-accent);
 }
 
 .heroSub {
   font-size: var(--text-md);
   color: var(--color-ink-muted);
   margin-top: var(--space-4);
-  max-width: 42rem;
+  max-width: 44rem;
 }
 
 .heroActions {
@@ -15,6 +73,10 @@
   flex-wrap: wrap;
   gap: var(--space-4);
   margin-top: var(--space-6);
+}
+
+.heroLogos {
+  margin-top: var(--space-8);
 }
 
 .primaryCta {
@@ -45,11 +107,209 @@
   color: var(--color-accent);
 }
 
+/* ---- Generic section ---- */
 .section {
   padding-block: var(--space-8);
   border-top: 1px solid var(--color-border);
 }
 
+/* Soft blue-tinted band: applied to alternating sections (see app/page.tsx)
+   so the split between sections reads from background color alone, not
+   just a hairline. Kept as a plain solid color rather than a gradient. */
+.sectionBlue {
+  background: #eaf2fb;
+}
+
+@media (forced-colors: active) {
+  .sectionBlue {
+    background: Canvas;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .sectionBlue {
+    background: var(--color-surface);
+  }
+}
+
+.lead {
+  max-width: var(--prose-max);
+  margin-top: var(--space-4);
+}
+
+.prose {
+  max-width: var(--prose-max);
+  margin-top: var(--space-5);
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: var(--text-md);
+}
+
+.cardBody {
+  margin-top: var(--space-2);
+  color: var(--color-ink-muted);
+  font-size: var(--text-sm);
+}
+
+/* ---- Demo band: a raised full-width band so the demo stands out ---- */
+.demoBand {
+  padding-block: var(--space-8);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sectionEyebrow {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+  margin: 0 0 var(--space-2);
+}
+
+.problemHeading {
+  margin-top: 0;
+  max-width: 24ch;
+}
+
+/* "Demo" sub-header: smaller than the section h2 but still prominent */
+.demoHeading {
+  margin-top: var(--space-6);
+  margin-bottom: 0;
+  font-size: var(--text-xl);
+  padding-bottom: var(--space-2);
+  border-bottom: 3px solid var(--color-accent);
+  display: inline-block;
+}
+
+.demoHint {
+  margin-top: var(--space-3);
+  color: var(--color-ink-muted);
+  font-size: var(--text-base);
+}
+
+/* Mini "How it works" block under the demo. No top border here — the demo
+   carousel's own bordered box already reads as the divider between the two;
+   a second rule line right below it was redundant. */
+.howItWorks {
+  margin-top: var(--space-8);
+  padding-top: var(--space-2);
+}
+
+.howHeading {
+  margin-top: 0;
+  font-size: var(--text-lg);
+}
+
+/* How it works steps */
+.stepList {
+  list-style: none;
+  margin: var(--space-5) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-6);
+  /* Override the global prose max-width so the grid can use full width */
+  max-width: none;
+}
+
+@media (min-width: 48rem) {
+  .stepList {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Icon stacked above the text so all three columns start on the same
+   baseline regardless of how the titles wrap. The margin reset undoes the
+   global `li + li` spacing, which otherwise staggers the grid items. */
+.step {
+  display: block;
+  margin-top: 0;
+}
+
+.stepIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-accent);
+}
+
+.stepIcon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.stepTitle {
+  margin: 0;
+  font-size: var(--text-base);
+}
+
+/* Organizations: a touch more border presence than the default
+   --color-border hairline, which reads as almost invisible on the card's
+   white surface. */
+.orgCard {
+  border-width: 1.5px;
+  border-color: #ddd6c9;
+}
+
+@media (forced-colors: active) {
+  .orgCard {
+    border-color: ButtonText;
+  }
+}
+
+/* Warm gradient panel so the demo invitation reads as a call to action
+   rather than another card in the grid above it. */
+.orgCta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.35);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(var(--color-accent-rgb), 0.14),
+      rgba(var(--color-accent-rgb), 0.03) 65%
+    ),
+    var(--color-surface);
+}
+
+@media (forced-colors: active) {
+  .orgCta {
+    background: Canvas;
+  }
+}
+
+.orgCtaText {
+  flex: 1 1 20rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Get band */
+.getBand {
+  padding-block: var(--space-8) var(--space-9);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+.getInner {
+  max-width: 54rem;
+}
+
+/* Shared by the privacy and accessibility utility pages */
 .problemList {
   margin-top: var(--space-5);
   padding-left: var(--space-6);
@@ -60,62 +320,9 @@
   font-weight: 600;
 }
 
-.stepList {
-  padding-left: var(--space-6);
-  max-width: var(--prose-max);
-}
-
-.stepList li + li {
-  margin-top: var(--space-4);
-}
-
-.tableWrap {
-  margin-top: var(--space-5);
-  overflow-x: auto;
-}
-
-.supportTable {
-  min-width: 36rem;
-}
-
-.supportTable th,
-.supportTable td {
-  text-align: left;
-  padding: var(--space-3) var(--space-4);
-  border-bottom: 1px solid var(--color-border);
-  font-size: var(--text-sm);
-}
-
-.supportTable thead th {
-  color: var(--color-ink-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  font-size: 0.75rem;
-}
-
-.badgeSolid,
-.badgePartial {
-  display: inline-block;
-  padding: var(--space-1) var(--space-3);
-  border-radius: var(--radius-sm);
-  font-weight: 700;
-  font-size: 0.75rem;
-  border: 1px solid transparent;
-}
-
-.badgeSolid {
-  background: var(--status-solid-bg);
-  border-color: var(--status-solid-border);
-  color: var(--status-solid-text);
-}
-
-.badgePartial {
-  background: var(--status-partial-bg);
-  border-color: var(--status-partial-border);
-  color: var(--status-partial-text);
-}
-
-.closing {
-  padding-block: var(--space-8) var(--space-9);
-  border-top: 1px solid var(--color-border);
+/* Simple page header for the contact / privacy / accessibility routes
+   and the 404 page (no full-bleed gradient band). */
+.pageHero {
+  padding-block: var(--space-8) var(--space-6);
+  max-width: 54rem;
 }

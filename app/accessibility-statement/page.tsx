@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { REPO_URL } from "@/lib/links";
+import Link from "next/link";
 import styles from "../page.module.css";
 
 export const metadata: Metadata = {
@@ -11,12 +11,12 @@ export const metadata: Metadata = {
 export default function AccessibilityStatementPage() {
   return (
     <>
-      <section className={`container ${styles.hero}`}>
+      <section className={`container ${styles.pageHero}`}>
         <h1>Accessibility statement</h1>
         <p className={styles.heroSub}>
-          This statement covers this website, the one you&rsquo;re reading right now. For
-          what the extension itself changes on third-party chat sites, see{" "}
-          <a href="/how-it-works">How it works</a>.
+          This statement covers this website, the one you are reading right now. For what
+          the extension itself changes on third-party chat sites, see{" "}
+          <Link href="/#how-it-works">How it works</Link>.
         </p>
       </section>
 
@@ -24,8 +24,8 @@ export default function AccessibilityStatementPage() {
         <h2>Conformance target</h2>
         <p>
           This site targets WCAG 2.2 Level AA across every page, and Level AAA where it
-          doesn&rsquo;t conflict with AA requirements &mdash; including color contrast,
-          keyboard operability, and reflow at 400% zoom.
+          does not conflict with AA requirements, including color contrast, keyboard
+          operability, and reflow at 400% zoom.
         </p>
       </section>
 
@@ -46,23 +46,8 @@ export default function AccessibilityStatementPage() {
         <h2>Known limitations</h2>
         <p>
           This site is new. If you find a gap between this statement and your actual
-          experience using it, that&rsquo;s a bug we want to fix, not a limitation
-          we&rsquo;re accepting. Tell us and we&rsquo;ll treat it like any other defect.
-        </p>
-      </section>
-
-      <section className={`container ${styles.section}`}>
-        <h2>Report a barrier</h2>
-        <p>
-          If something on this site doesn&rsquo;t work with your screen reader, your
-          keyboard, or your browser&rsquo;s zoom or high-contrast settings, we want to
-          hear about it. We read every report and aim to respond within a few days.
-        </p>
-        <p className={styles.moreLink}>
-          <a href={`${REPO_URL}/issues`}>Open an issue on GitHub</a>
-        </p>
-        <p>
-          Last reviewed: <time dateTime="2026-07-13">July 13, 2026</time>.
+          experience using it, treat it as a bug and tell us. We will fix it the same way
+          we would fix any other defect.
         </p>
       </section>
     </>

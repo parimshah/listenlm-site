@@ -1,0 +1,103 @@
+/* ============================================================
+   effects.css - shared layout helper (card grid).
+   Kept intentionally plain: the design leans on clear type, strong
+   contrast, and generous spacing rather than decorative motion.
+   All motion here is paused by the global prefers-reduced-motion
+   rule in tokens.css.
+   ============================================================ */
+
+/* ---- Card grid ---- */
+.bentoGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+@media (min-width: 40rem) {
+  .bentoGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.bentoCard {
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  height: 100%;
+}
+
+/* ---- Cursor spotlight: soft blue glow that follows the pointer, position
+   set via --x/--y by components/ui/Spotlight.tsx. The component itself
+   declines to render under prefers-reduced-motion. ---- */
+.spotlight {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    520px circle at var(--x, 50%) var(--y, 15%),
+    rgba(96, 165, 250, 0.13),
+    transparent 70%
+  );
+}
+
+@media (forced-colors: active), (prefers-contrast: more) {
+  .spotlight {
+    display: none;
+  }
+}
+
+/* ---- Hover border gradient: a rotating conic-gradient ring that fades in
+   on hover/focus around whichever element it's applied to alongside. ---- */
+@property --hbg-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.hoverBorderGradient {
+  position: relative;
+  isolation: isolate;
+}
+
+.hoverBorderGradient::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--hbg-angle, 0deg),
+    rgba(var(--color-accent-rgb), 0.65),
+    rgba(var(--color-secondary-rgb), 0.55),
+    rgba(var(--color-accent-rgb), 0.65)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-standard);
+}
+
+.hoverBorderGradient:hover::before,
+.hoverBorderGradient:focus-within::before {
+  opacity: 1;
+  animation: hbg-spin 2.5s linear infinite;
+}
+
+@keyframes hbg-spin {
+  to {
+    --hbg-angle: 360deg;
+  }
+}
+
+@media (forced-colors: active), (prefers-contrast: more) {
+  .hoverBorderGradient::before {
+    display: none;
+  }
+}

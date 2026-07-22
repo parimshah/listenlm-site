@@ -13,11 +13,11 @@ test("skip link is the first focusable element and jumps to main content", async
 
 test("primary nav links are reachable and operable by keyboard", async ({ page }) => {
   await page.goto("/");
-  const downloadLink = page
+  const contactLink = page
     .getByRole("navigation", { name: "Primary" })
-    .getByRole("link", { name: "Download", exact: true });
-  await downloadLink.focus();
-  await expect(downloadLink).toBeFocused();
+    .getByRole("link", { name: "Contact", exact: true });
+  await contactLink.focus();
+  await expect(contactLink).toBeFocused();
   await page.keyboard.press("Enter");
-  await expect(page).toHaveURL(/\/download$/);
+  await expect(page).toHaveURL(/\/contact$/);
 });

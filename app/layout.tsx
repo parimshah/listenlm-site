@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Atkinson_Hyperlegible, IBM_Plex_Mono } from "next/font/google";
+import { Atkinson_Hyperlegible, IBM_Plex_Mono, Fraunces } from "next/font/google";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -19,13 +19,23 @@ const plexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
+// Display face for headings. Fraunces has real character (soft, slightly
+// quirky serif) which keeps the page from reading as a stock template,
+// while Atkinson Hyperlegible still carries all the body copy.
+const fraunces = Fraunces({
+  variable: "--font-display-face",
+  subsets: ["latin"],
+  display: "swap",
+  axes: ["SOFT", "WONK"],
+});
+
 export const metadata: Metadata = {
   title: {
-    default: "ListenLM — AI chat that reads back correctly",
-    template: "%s — ListenLM",
+    default: "ListenLM · Make AI chatbots work with your screen reader",
+    template: "%s · ListenLM",
   },
   description:
-    "ListenLM runs quietly underneath the screen reader you already use, making Claude, ChatGPT, Gemini, and Copilot — plus your coding tools — fully readable and navigable. No new commands to learn.",
+    "ListenLM is a free Chrome extension that fixes how VoiceOver, NVDA, JAWS, and Orca read Claude, ChatGPT, and Gemini outputs. It restructures each reply so your screen reader announces it clearly.",
 };
 
 export default function RootLayout({
@@ -34,7 +44,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${atkinson.variable} ${plexMono.variable}`}>
+    <html
+      lang="en"
+      className={`${atkinson.variable} ${plexMono.variable} ${fraunces.variable}`}
+    >
       <body>
         <SkipLink />
         <SiteHeader />

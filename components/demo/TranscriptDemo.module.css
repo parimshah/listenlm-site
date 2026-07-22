@@ -1,27 +1,22 @@
+/* Unstyled: the surrounding carousel provides the card frame and padding. */
 .section {
-  margin-top: var(--space-7);
-  padding: var(--space-6);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 .heading {
   margin-top: 0;
   font-size: var(--text-md);
-}
-
-.contextNote {
-  color: var(--color-ink-muted);
-  font-size: var(--text-sm);
-  margin-top: var(--space-2);
+  /* Keep clear of the carousel arrows pinned to the top-right */
+  padding-right: 7rem;
 }
 
 .paneGrid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-4);
-  margin-top: var(--space-5);
+  margin-top: var(--space-4);
 }
 
 @media (min-width: 48rem) {
@@ -34,18 +29,31 @@
   padding: var(--space-5);
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
-  background: var(--color-bg);
+  background: var(--color-surface-raised);
+  transition:
+    transform var(--duration-base) var(--ease-standard),
+    box-shadow var(--duration-base) var(--ease-standard);
+}
+
+.pane:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -18px rgba(26, 22, 17, 0.28);
 }
 
 .before {
   border-left: 4px solid var(--status-partial-border);
+  background: var(--status-partial-bg);
 }
 
 .after {
   border-left: 4px solid var(--color-secondary);
+  background: var(--status-solid-bg);
 }
 
 .paneLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
   font-weight: 700;
   font-size: var(--text-sm);
   text-transform: uppercase;
@@ -53,12 +61,19 @@
   margin: 0;
 }
 
+.paneIcon {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex: 0 0 auto;
+}
+
 .before .paneLabel {
   color: var(--status-partial-text);
 }
 
+/* Darker than --color-secondary so bold 14px clears 4.5:1 on the tinted pane */
 .after .paneLabel {
-  color: var(--color-secondary);
+  color: var(--status-solid-text);
 }
 
 .transcript {
@@ -67,9 +82,4 @@
   line-height: var(--leading-normal);
   margin-top: var(--space-3);
   color: var(--color-ink);
-}
-
-.audio {
-  width: 100%;
-  margin-top: var(--space-4);
 }

@@ -6,18 +6,16 @@ export function SiteFooter() {
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>
         <p className={styles.tagline}>
-          ListenLM. Built by a screen reader team, held to the same standard it ships.
+          ListenLM. A free Chrome extension that makes AI chatbots work with your screen
+          reader.
         </p>
         <nav aria-label="Footer" className={styles.nav}>
           <ul className={styles.navList}>
             <li>
-              <Link href="/how-it-works">How it works</Link>
+              <Link href="/#demo">Demo</Link>
             </li>
             <li>
-              <Link href="/download">Download</Link>
-            </li>
-            <li>
-              <Link href="/about">About</Link>
+              <Link href="/contact">Contact</Link>
             </li>
             <li>
               <Link href="/accessibility-statement">Accessibility statement</Link>
@@ -25,12 +23,9 @@ export function SiteFooter() {
             <li>
               <Link href="/privacy">Privacy</Link>
             </li>
-            <li>
-              <a href="https://github.com/JacquelineDMcGraw/claude-a11y">GitHub</a>
-            </li>
           </ul>
         </nav>
-        <p className={styles.legal}>Released under the MIT license.</p>
+        <p className={styles.legal}>Free to use. Made for screen reader users.</p>
       </div>
     </footer>
   );

@@ -1,9 +1,7 @@
 /**
- * Real, currently-live links. TODO: update REPO_URL once the source
- * repository itself is renamed/moved as part of the ListenLM rebrand.
- * Do not add Chrome Web Store / VS Code Marketplace / npm package links
- * here until those listings actually exist — see /download's
- * "coming soon" framing for anything not live yet.
+ * Central place for the handful of real, live contact points. ListenLM is
+ * free but not open source, so there is deliberately no public source-repo
+ * link here. Everything routes to the team's email instead.
  */
-export const REPO_URL = "https://github.com/JacquelineDMcGraw/claude-a11y";
-export const REPO_CLONE_COMMAND = `git clone ${REPO_URL}.git`;
+export const CONTACT_EMAIL = "shahparim3@gmail.com";
+export const CONTACT_MAILTO = `mailto:${CONTACT_EMAIL}`;

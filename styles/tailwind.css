@@ -1,0 +1,13 @@
+/* ============================================================
+   tailwind.css - scoped Tailwind: utilities only, no preflight.
+
+   Tailwind is used only inside the Aceternity-derived components
+   under components/ui/ (see HeroHighlight.tsx, CardHoverEffect.tsx).
+   Skipping the "base" layer (Tailwind's reset) is deliberate: the
+   rest of the site's typography, spacing, and focus/contrast
+   behavior comes from app/globals.css + styles/tokens.css, and a
+   global reset here would fight that everywhere, not just inside
+   the new components.
+   ============================================================ */
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);

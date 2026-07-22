@@ -1,0 +1,150 @@
+/* The carousel itself is the card. The slides sit inside it unstyled, so
+   the arrows can live in the top-right corner of the same box instead of
+   floating above it. */
+.carousel {
+  position: relative;
+  margin-top: var(--space-5);
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg);
+  box-shadow: 0 24px 60px -36px rgba(26, 22, 17, 0.22);
+}
+
+.controls {
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-5);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.buttons {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.navButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  font-size: var(--text-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  cursor: pointer;
+  transition:
+    border-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+.navButton:hover:not(:disabled) {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px -8px rgba(var(--color-accent-rgb), 0.4);
+}
+
+.navButton:active:not(:disabled) {
+  transform: translateY(0) scale(0.95);
+}
+
+.navButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.track {
+  display: flex;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  /* Without this the off-screen slides inflate the document's scroll width
+     and the whole page scrolls sideways, even though the track clips them. */
+  contain: paint;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  min-width: 0;
+  opacity: 0.5;
+  transform: scale(0.97);
+  transition:
+    opacity var(--duration-base) var(--ease-standard),
+    transform var(--duration-base) var(--ease-standard);
+}
+
+.slideActive {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.slide > :global(section) {
+  margin-top: 0;
+  height: 100%;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+}
+
+/* 24x24 hit target (WCAG 2.5.8) with a smaller visual dot centered inside.
+   The active dot morphs into a pill so switching examples reads clearly. */
+.dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: width var(--duration-base) var(--ease-standard);
+}
+
+.dot::before {
+  content: "";
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 999px;
+  border: 2px solid var(--color-ink-muted);
+  background: transparent;
+  transition: all var(--duration-base) var(--ease-standard);
+}
+
+.dot:hover::before {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+}
+
+.dotActive {
+  width: 2.25rem;
+}
+
+.dotActive::before {
+  width: 100%;
+  height: 0.6rem;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
